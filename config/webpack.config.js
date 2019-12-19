@@ -512,6 +512,9 @@ module.exports = function(webpackEnv) {
               // Remove this when webpack adds a warning or an error for this.
               // See https://github.com/webpack/webpack/issues/6571
               sideEffects: true,
+              options: {
+                javascriptEnabled: true,
+              }
             },
             // Adds support for CSS Modules, but using SASS
             // using the extension .module.scss or .module.sass
