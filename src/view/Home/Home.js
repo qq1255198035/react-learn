@@ -8,9 +8,9 @@ class Home extends Component{
         this.state = {isToggleOn: true};
     }
     componentWillMount(){
-        // getExample().then(res => {
-        //     console.log(res)
-        // })
+        getExample().then(res => {
+            console.log(res)
+        })
     }
 
     render() {

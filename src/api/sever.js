@@ -6,7 +6,16 @@ import { Component } from "react";
 // 请求前拦截
 axios.interceptors.request.use(
     config => {
-        
+        const token = '';
+        if (token){
+            config.headers[ 'X-Access-Token' ] = token // 让每个请求携带自定义 token 请根据实际情况自行修改
+        }
+        if(config.method === 'get'){
+            config.params = {
+                _t: Date.parse(new Date())/1000,
+                ...config.params
+            }
+        }
         return config;
     },
     err => {
@@ -18,7 +27,11 @@ axios.interceptors.request.use(
 // 返回后拦截
 axios.interceptors.response.use(
     data => {
+        console.log(data)
+        
+        
         return data.data;
+        
     },
     err => {
         if (err.response.status === 504 || err.response.status === 404) {
